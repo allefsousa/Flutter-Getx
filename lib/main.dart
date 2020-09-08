@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/pages/presentation/view/home_view.dart';
 import 'package:flutter_getx/routes/app_pages.dart';
 import 'package:flutter_getx/shared/logger_utils.dart';
 import 'package:get/get.dart';
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: true,
+      defaultTransition: Transition.rightToLeft,
       logWriterCallback: Logger.write,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      home: Container(),
     );
   }
 }
