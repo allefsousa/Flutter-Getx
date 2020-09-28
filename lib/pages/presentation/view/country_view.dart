@@ -20,6 +20,31 @@ class CountryView extends GetWidget<HomeController> {
           decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
           child: Scaffold(
             backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              title: Text("Corona By Country"),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              centerTitle: true,
+            ),
+            body:Center(
+                child: ListView.builder(
+                    itemCount: controller.cases.value.countries.length,
+                    itemBuilder: (context, index) {
+                      final country = controller.cases.value.countries[index];
+                      return ListTile(
+                        onTap: () {
+                          Get.toNamed('/details', arguments: country);
+                        },
+                        trailing: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "https://flagpedia.net/data/flags/normal/${country.countryCode.toLowerCase()}.png"),
+                        ),
+                        title: Text(country.country),
+                        subtitle:
+                        Text("Total infecteds: ${country.totalConfirmed}"),
+                      );
+                    })
+            ) ,
           ),
         ),
       ),
